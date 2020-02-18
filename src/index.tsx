@@ -1,4 +1,4 @@
-import App from "./components/App";
+import App from "./app/App";
 import { render } from "react-dom";
 import * as React from "react";
 
