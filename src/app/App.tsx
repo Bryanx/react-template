@@ -1,16 +1,29 @@
 import * as React from "react";
 import "./App.scss"
+import { Todo } from "../todo/todo";
 const reactLogo = require("../assets/reactlogo.gif");
 
-class App extends React.Component {
+interface AppProps {
+    todos: Todo[]
+    addTodo: () => void
+}
 
-    public static title = "Hello World!"
+class App extends React.Component<AppProps> {
+
+    todos = this.props.todos
+    handleClick = () => this.props.addTodo()
 
     public render() {
         return (
             <div className="app">
                 <img src={reactLogo.default} height="120" />
-                <h1>{App.title}</h1>
+                <h1>"Hello World!"</h1>
+                <button onClick={this.handleClick}>ADD TODO</button>
+                <ul>
+                    {this.props.todos.map(todo =>
+                        <li key={todo.id}>{todo.name}</li>
+                    )}
+                </ul>
             </div>
         );
     }
