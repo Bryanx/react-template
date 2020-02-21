@@ -3,19 +3,15 @@ import * as React from 'react';
 import * as Redux from 'redux';
 import App from './app/App';
 import todosReducer from './todo/todoReducer';
+import { Provider } from 'react-redux';
 
 const store = Redux.createStore(Redux.combineReducers({ todos: todosReducer }));
 
 const render = () => {
   ReactDOM.render(
-    <App
-      todos={store.getState().todos}
-      addTodo={() => store.dispatch({
-        type: 'ADD',
-        name: 'Do dishes',
-        completed: false,
-      })}
-    />,
+    <Provider store={store}>
+      <App />
+    </Provider>,
     document.getElementById('root'),
   );
 };

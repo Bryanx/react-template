@@ -29,6 +29,7 @@
     "@testing-library/react": "^9.4.0",
     "@types/deep-freeze": "^0.1.2",
     "@types/jest": "^25.1.2",
+    "@types/react-redux": "^7.1.7",
     "@typescript-eslint/eslint-plugin": "^2.20.0",
     "@typescript-eslint/parser": "^2.20.0",
     "css-loader": "^3.4.2",
@@ -56,11 +57,12 @@
     "webpack-dev-server": "^3.10.3"
   },
   "dependencies": {
+    "@types/react": "^16.9.19",
+    "@types/react-dom": "^16.9.5",
     "deep-freeze": "0.0.1",
-    "redux": "^4.0.5",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
-    "@types/react": "^16.9.19",
-    "@types/react-dom": "^16.9.5"
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   }
 }

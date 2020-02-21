@@ -1,7 +1,7 @@
 import { TodoAction } from './todoAction';
 import { Todo } from './todo';
 
-var id = 0;
+let id = 0;
 
 const todosReducer = (state: Todo[] = [], action: TodoAction) => {
   switch (action.type) {
