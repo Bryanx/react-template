@@ -5,12 +5,28 @@ import { Todo } from '../todo/todo';
 import { connect } from 'react-redux';
 const reactLogo = require('../assets/reactlogo.gif');
 
-const App = ({ onClick, todoNames }) => {
+const App = ({ addTodo, todoNames }) => {
+  let input: { value: string; };
+
   return (
     <div className="app">
       <img src={reactLogo.default} height="120" alt="" />
       <h1>Hello World!</h1>
-      <button onClick={onClick}>ADD TODO</button>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!input.value.trim()) {
+            return;
+          }
+          addTodo(input.value);
+          input.value = '';
+        }}
+      >
+        <input ref={node => { input = node; }} />
+        <button type="submit">
+          Add Todo
+        </button>
+      </form>
       <ul>
         {todoNames}
       </ul>
@@ -18,15 +34,15 @@ const App = ({ onClick, todoNames }) => {
   );
 }
 
-const mapStateToProps = (state: { todos: Todo[]; }) => ({
-  todoNames: state.todos.map((todo: Todo) => <li key={todo.id}>{todo.name}</li>),
+const mapStateToProps = ({ todos }) => ({
+  todoNames: todos.map((todo: Todo) => <li key={todo.id}>{todo.name}</li>),
 });
 
 const mapDispatchToProps = (dispatch: Redux.Dispatch) => ({
-  onClick: () => {
+  addTodo: (text: string) => {
     dispatch({
       type: 'ADD',
-      name: 'Do dishes',
+      name: text,
       completed: false,
     });
   },
